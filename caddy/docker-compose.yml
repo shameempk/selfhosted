@@ -1,0 +1,27 @@
+version: "3"
+services:
+
+  caddy:
+    image: caddy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    container_name: caddy
+    hostname: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - MY_DOMAIN
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./data:/data
+      - ./config:/config
+
+networks:
+  default:
+    external:
+      name: $DOCKER_MY_NETWORK

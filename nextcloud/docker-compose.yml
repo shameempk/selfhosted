@@ -1,0 +1,35 @@
+version: '3'
+services:
+
+  nextcloud-db:
+    image: linuxserver/mariadb
+    container_name: nextcloud-db
+    hostname: nextcloud-db
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./nextcloud-data-db:/config
+
+  nextcloud-redis:
+    image: redis:alpine
+    container_name: nextcloud-redis
+    hostname: nextcloud-redis
+    restart: unless-stopped
+
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    hostname: nextcloud
+    restart: unless-stopped
+    env_file: .env
+    depends_on:
+      - nextcloud-db
+      - nextcloud-redis
+    volumes:
+      - ./nextcloud-data/:/var/www/html
+      - /home/pi/Sync/:/mnt/Sync
+
+networks:
+  default:
+    external:
+      name: $DOCKER_MY_NETWORK

@@ -1,0 +1,18 @@
+version: '3'
+services:
+  
+  wallabag:
+    image: ugeek/wallabag:arm
+    container_name: wallabag
+    env_file: .env
+    restart: unless-stopped
+    #ports:
+    #  - "1881"
+    volumes:
+      - ./images:/var/www/wallabag/web/assets/images
+      - ./data/db/:/var/www/wallabag/data/db
+
+networks:
+  default:
+    external:
+      name: $DOCKER_MY_NETWORK
