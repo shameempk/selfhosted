@@ -9,6 +9,7 @@ services:
     env_file: .env
     volumes:
       - ./nextcloud-data-db:/config
+      - ./mariadb-config:/etc/mysql/conf.d
 
   nextcloud-redis:
     image: redis:alpine
