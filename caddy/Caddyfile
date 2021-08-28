@@ -9,6 +9,9 @@ wallabag.{$MY_DOMAIN} {
     reverse_proxy wallabag:80
     #header Strict-Transport-Security max-age=31536000;
 }
+whoogle.{$MY_DOMAIN} {
+    reverse_proxy whoogle-search:5000
+}
 nextcloud.{$MY_DOMAIN} {
     reverse_proxy nextcloud:80
     header Strict-Transport-Security max-age=31536000;
