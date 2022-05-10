@@ -29,7 +29,8 @@ services:
       - nextcloud-redis
     volumes:
       - ./nextcloud-data/:/var/www/html
-      - /home/shameempk/Sync/:/mnt/Sync:rw
+      - /home/shameempk/syncthing/Sync:/mnt/Sync:rw
+      - /home/shameempk/syncthing/Sync-Phone:/mnt/Sync-Phone:rw
 
 networks:
   default:
