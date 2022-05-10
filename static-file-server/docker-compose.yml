@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  static-file-server:
+    container_name: static-file-server
+    image: halverneus/static-file-server
+    env_file: .env
+    restart: unless-stopped
+    volumes:
+      - ./web:/web
+
+networks:
+  default:
+    external:
+      name: $DOCKER_MY_NETWORK
