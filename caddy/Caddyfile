@@ -14,7 +14,7 @@ whoogle.{$MY_DOMAIN} {
 }
 nextcloud.{$MY_DOMAIN} {
     reverse_proxy nextcloud:80
-    header Strict-Transport-Security max-age=31536000;
+    header Strict-Transport-Security max-age=15552000;
     redir /.well-known/carddav /remote.php/carddav 301
     redir /.well-known/caldav /remote.php/caldav 301
 }
