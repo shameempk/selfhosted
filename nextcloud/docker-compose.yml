@@ -1,4 +1,4 @@
-version: '3'
+version: '3.6'
 services:
 
   nextcloud-db:
@@ -29,8 +29,12 @@ services:
       - nextcloud-redis
     volumes:
       - ./nextcloud-data/:/var/www/html
-      - /home/shameempk/syncthing/Sync:/mnt/Sync:rw
-      - /home/shameempk/syncthing/Sync-Phone:/mnt/Sync-Phone:rw
+      - type: bind
+        source: /home/shameempk/syncthing/Sync
+        target: /mnt/Sync
+      - type: bind
+        source: /home/shameempk/syncthing/Sync-Phone
+        target: /mnt/Sync-Phone
 
 networks:
   default:
