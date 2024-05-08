@@ -5,8 +5,8 @@ email    shameempk@pm.me
 
 }
 
-wallabag.{$MY_DOMAIN} {
-    reverse_proxy wallabag:80
+linkding.{$MY_DOMAIN} {
+    reverse_proxy linkding:9090
     #header Strict-Transport-Security max-age=31536000;
 }
 whoogle.{$MY_DOMAIN} {
