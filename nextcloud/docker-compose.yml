@@ -36,6 +36,24 @@ services:
         source: /home/shameempk/syncthing/Sync-Phone
         target: /mnt/Sync-Phone
 
+  nextcloud-cron:
+    image: nextcloud
+    container_name: nextcloud-cron
+    hostname: nextcloud-cron
+    restart: unless-stopped
+    env_file: .env
+    depends_on:
+      - nextcloud
+    entrypoint: /cron.sh
+    volumes:
+      - ./nextcloud-data/:/var/www/html
+      - type: bind
+        source: /home/shameempk/syncthing/Sync
+        target: /mnt/Sync
+      - type: bind
+        source: /home/shameempk/syncthing/Sync-Phone
+        target: /mnt/Sync-Phone
+
 networks:
   default:
     external:
